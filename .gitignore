@@ -1,0 +1,10 @@
+# data (download raw files from CMS, see README; processed files are rebuilt by the SQL notebook)
+data/raw/
+data/Processed/
+
+# Jupyter and system files
+.ipynb_checkpoints/
+.DS_Store
+
+# backups
+*backup*
