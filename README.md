@@ -57,8 +57,7 @@ and are used in the analysis.
   contain the target ([star rating methodology summary](https://blog.medisolv.com/articles/2025-star-ratings-calculation)).
 
 ## Methods
-- **SQL (DuckDB):** built the analysis dataset from the raw CMS files, so the data pipeline is
-  reproducible from the original downloads.
+- **SQL (DuckDB):** built the analysis dataset from the raw CMS files
 - **Visualizations:** histograms, box plots, a scatter plot, and a correlation heatmap to compare
   ED stays by hospital type, ER volume, ownership, region, and star rating before modeling.
 - **Spearman correlation:** rank-based, so it handles outliers and features with only a few
@@ -68,8 +67,7 @@ and are used in the analysis.
   so hospitals at the high end are the ones of most concern. "Severe" means above the 75th
   percentile (324+ minutes), the same "worst-performing quartile" cut CMS uses in its
   [Hospital-Acquired Condition Reduction Program](https://www.cms.gov/medicare/quality/value-based-programs/hospital-acquired-conditions).
-  CMS does not set this cutoff for OP-18 itself; applying it here is my modeling choice. It also
-  focuses on the longest stays and isn't distorted by extreme outliers (up to 6,870 minutes).
+  CMS does not set this cutoff for OP-18 itself; applying it here is my modeling choice. 
 - **Logistic regression:** interpretable. Odds ratios show which characteristics are linked to
   severe stays and in which direction, which answers the research question directly.
 - **`class_weight="balanced"`:** only 25% of hospitals are severe, so without it the model would
@@ -119,15 +117,14 @@ were truly severe.*
 - Only hospitals that report the measure are included. Small and rural hospitals are
   underrepresented, the model can't be evaluated for non-reporting hospitals, and performance was
   not checked separately for the Critical Access hospitals that do report.
-- OP-18c measures ED length of stay for discharged patients, not boarding.
+- OP-18c measures ED length of stay for discharged patients, not boarding
 - One time period; no psychiatric bed capacity, hospital finance, or community income data.
 
 ## Next steps
 - Add other ED crowding measures, such as patients who leave without being seen (OP-22)
 - Add psychiatric bed capacity data and multiple years of CMS data
 - Add hospital financial data or community income by ZIP code
-- Check performance for the rural hospitals that report, using USDA rural-urban codes by ZIP
-- Adjust for non-reporting hospitals (e.g., inverse probability weighting)
+
 
 ## How to run
 1. Download the two CMS files above into `data/raw/` (raw and processed data are not stored in this repo).
