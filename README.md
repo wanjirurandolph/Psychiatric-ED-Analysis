@@ -117,13 +117,14 @@ were truly severe.*
 - Only hospitals that report the measure are included. Small and rural hospitals are
   underrepresented, the model can't be evaluated for non-reporting hospitals, and performance was
   not checked separately for the Critical Access hospitals that do report.
-- OP-18c measures ED length of stay for discharged patients, not boarding
 - One time period; no psychiatric bed capacity, hospital finance, or community income data.
 
 ## Next steps
 - Add other ED crowding measures, such as patients who leave without being seen (OP-22)
 - Add psychiatric bed capacity data and multiple years of CMS data
 - Add hospital financial data or community income by ZIP code
+- Set the decision threshold to keep recall at 70% or higher, then maximize precision. Too many false alarms can cause alert fatigue, where staff may start ignoring flags. The cutoff would be chosen with cross-validation on the training data and confirmed once on the test set.
+- Try a more flexible models, such as gradient boosting, to check for patterns logistic regression may miss 
 
 
 ## How to run
